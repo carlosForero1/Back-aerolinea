@@ -16,6 +16,9 @@ public class FlightService {
     @Autowired
     private FlightRepository repository;
 
+    @Autowired
+    private BookingService bookingService;
+
     public List<Flight> getFlights(Long originCityId, Long destinationCityId, String date) {
         return repository.findBy(originCityId, destinationCityId, date);
     }
@@ -25,6 +28,16 @@ public class FlightService {
     }
     public Optional<Flight> findById(Long id) {
         return repository.findById(id);
+    }
+
+    public boolean isFlightFull(Long flightId) {
+        Optional<Flight> flightOptional = repository.findById(flightId);
+        if (flightOptional.isPresent()) {
+            Flight flight = flightOptional.get();
+            int bookedSeats = bookingService.getBookedSeatsForFlight(flightId);
+            return bookedSeats >= flight.getCapacity();
+        }
+        return false;
     }
 }
 

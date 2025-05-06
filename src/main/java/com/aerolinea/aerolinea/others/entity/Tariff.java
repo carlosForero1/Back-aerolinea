@@ -2,6 +2,7 @@ package com.aerolinea.aerolinea.others.entity;
 
 import com.aerolinea.aerolinea.booking.entity.Flight;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Tariff {
@@ -23,6 +24,13 @@ public class Tariff {
     @JoinColumn(name = "flight_id", nullable = false)
     private Flight flight;
 
+    @ManyToMany
+    @JoinTable(
+            name = "tariff_extras",
+            joinColumns = @JoinColumn(name = "tariff_id"),
+            inverseJoinColumns = @JoinColumn(name = "extra_id")
+    )
+    private List<Additional> Additionals;
 
     public Long getId() {
         return id;
@@ -64,6 +72,14 @@ public class Tariff {
         this.flight = flight;
     }
 
+    public List<Additional> getAdditionals() {
+        return Additionals;
+    }
+
+    public void setAdditionals(List<Additional> additionals) {
+        Additionals = additionals;
+    }
+
     @Override
     public String toString() {
         return "Tariff{" +
@@ -72,6 +88,7 @@ public class Tariff {
                 ", price=" + price +
                 ", currency='" + currency + '\'' +
                 ", flight=" + flight +
+                ", extras=" + (Additionals != null ? Additionals.stream().map(Additional::getName).collect(java.util.stream.Collectors.toList()) : null) +
                 '}';
     }
 }

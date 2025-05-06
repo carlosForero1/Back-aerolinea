@@ -1,10 +1,13 @@
 package com.aerolinea.aerolinea.others.controller;
 
+import com.aerolinea.aerolinea.others.entity.Additional;
 import com.aerolinea.aerolinea.others.entity.City;
 import com.aerolinea.aerolinea.others.entity.Tariff;
 import com.aerolinea.aerolinea.others.service.CityService;
 import com.aerolinea.aerolinea.others.service.TariffService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -26,7 +29,7 @@ public class TariffController {
 
     @GetMapping("/tariffs/flight/{id}")
     public List<Tariff> getTariffByFlightId(@PathVariable Long id){
-        List<Tariff> todasLasTarifas = service.getAllTariff();
+        List<Tariff> todasLasTarifas = service.getValidTariffsForFlight(id);
         List<Tariff> result = new ArrayList<>();
 
         if (!todasLasTarifas.isEmpty()){
@@ -40,4 +43,16 @@ public class TariffController {
 
         return result;
     }
+
+    @GetMapping("/{tariffId}/additionals")
+    public ResponseEntity<List<Additional>> getAdditionalsForTariff(@PathVariable Long tariffId) {
+        try {
+            List<Tariff> taff = service.getAllTariff();
+            List<Additional> additionals = service.getTariffWithAdditionals(tariffId);
+            return new ResponseEntity<>(additionals, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

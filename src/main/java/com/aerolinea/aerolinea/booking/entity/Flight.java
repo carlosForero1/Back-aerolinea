@@ -1,7 +1,6 @@
 package com.aerolinea.aerolinea.booking.entity;
 
 import com.aerolinea.aerolinea.others.entity.City;
-import com.aerolinea.aerolinea.others.entity.Tariff;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -21,6 +20,8 @@ public class Flight {
     private String airline;
     private Double miles;
     private Boolean isDirect;
+    private String validRates;
+    private int capacity;
 
 
     public Flight() {
@@ -28,7 +29,7 @@ public class Flight {
 
     public Flight(Long id, String name, City departureCity, City arrivalCity, String departureDate,
                   String arrivalDate,
-                  String airline, Double miles, Boolean isDirect) {
+                  String airline, Double miles, Boolean isDirect,String validRates, int capacity) {
         this.id = id;
         this.name = name;
         this.departureCity = departureCity;
@@ -38,6 +39,8 @@ public class Flight {
         this.airline = airline;
         this.miles = miles;
         this.isDirect = isDirect;
+        this.validRates = validRates;
+        this.capacity = capacity;
     }
 
     public Long getId() {
@@ -112,5 +115,35 @@ public class Flight {
         isDirect = direct;
     }
 
+    public String getValidRates() {
+        return validRates;
+    }
 
+    public void setValidRates(String validRates) {
+        this.validRates = validRates;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", departureCity=" + departureCity +
+                ", arrivalCity=" + arrivalCity +
+                ", departureDate='" + departureDate + '\'' +
+                ", arrivalDate='" + arrivalDate + '\'' +
+                ", airline='" + airline + '\'' +
+                ", miles=" + miles +
+                ", isDirect=" + isDirect +
+                ", validRates='" + validRates + '\'' +
+                '}';
+    }
 }
