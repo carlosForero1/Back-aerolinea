@@ -1,6 +1,6 @@
-package com.aerolinea.aerolinea.others.repository;
+package com.aerolinea.aerolinea.booking.repository;
 
-import com.aerolinea.aerolinea.others.entity.City;
+import com.aerolinea.aerolinea.booking.entity.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,5 @@
-package com.aerolinea.aerolinea.others.entity;
+package com.aerolinea.aerolinea.booking.entity;
 
-import com.aerolinea.aerolinea.booking.entity.Flight;
 import jakarta.persistence.*;
 import java.util.List;
 

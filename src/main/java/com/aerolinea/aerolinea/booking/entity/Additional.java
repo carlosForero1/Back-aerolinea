@@ -1,4 +1,4 @@
-package com.aerolinea.aerolinea.others.entity;
+package com.aerolinea.aerolinea.booking.entity;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;

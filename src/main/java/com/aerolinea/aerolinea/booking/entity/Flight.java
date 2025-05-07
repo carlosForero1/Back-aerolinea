@@ -1,8 +1,6 @@
 package com.aerolinea.aerolinea.booking.entity;
 
-import com.aerolinea.aerolinea.others.entity.City;
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 public class Flight {
