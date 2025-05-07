@@ -26,16 +26,16 @@ public class FlightController {
     public List<Flight> getFlightsWithCapacityStatus(
             @RequestParam Long originCityId,
             @RequestParam Long destinationCityId,
-            @RequestParam(value = "date", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") String date // Hacer el parámetro 'date' opcional
+            @RequestParam(value = "date", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") String date
     ) {
         List<Flight> result = new ArrayList<>();
-        if (date != null && !date.isEmpty() && !date.equals("")) {
+        if (date != null && !date.isEmpty()) {
             result = flightService.getFlights(originCityId, destinationCityId, date);
         } else {
             List<Flight> flights = flightService.allFlights();
             for (Flight flight : flights) {
-                if (originCityId.equals(flight.getArrivalCity().getId())) {
-                    if (destinationCityId.equals(flight.getDepartureCity().getId())) {
+                if (destinationCityId.equals(flight.getArrivalCity().getId())) {
+                    if (originCityId.equals(flight.getDepartureCity().getId())) {
                         result.add(flight);
                     }
                 }
