@@ -1,7 +1,7 @@
-package com.aerolinea.aerolinea.booking.Controller;
+package com.aerolinea.aerolinea.booking.city.controller;
 
-import com.aerolinea.aerolinea.booking.entity.City;
-import com.aerolinea.aerolinea.booking.service.CityService;
+import com.aerolinea.aerolinea.booking.city.entity.City;
+import com.aerolinea.aerolinea.booking.city.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

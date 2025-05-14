@@ -1,7 +1,7 @@
-package com.aerolinea.aerolinea.booking.service;
+package com.aerolinea.aerolinea.booking.city.service;
 
-import com.aerolinea.aerolinea.booking.entity.City;
-import com.aerolinea.aerolinea.booking.repository.CityRepository;
+import com.aerolinea.aerolinea.booking.city.entity.City;
+import com.aerolinea.aerolinea.booking.city.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

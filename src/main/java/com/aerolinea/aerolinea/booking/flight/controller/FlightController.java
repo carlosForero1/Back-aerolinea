@@ -1,7 +1,7 @@
-package com.aerolinea.aerolinea.booking.Controller;
+package com.aerolinea.aerolinea.booking.flight.controller;
 
-import com.aerolinea.aerolinea.booking.entity.Flight;
-import com.aerolinea.aerolinea.booking.service.FlightService;
+import com.aerolinea.aerolinea.booking.flight.entity.Flight;
+import com.aerolinea.aerolinea.booking.flight.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;

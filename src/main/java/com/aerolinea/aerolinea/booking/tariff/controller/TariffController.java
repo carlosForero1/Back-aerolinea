@@ -1,8 +1,8 @@
-package com.aerolinea.aerolinea.booking.Controller;
+package com.aerolinea.aerolinea.booking.tariff.controller;
 
-import com.aerolinea.aerolinea.booking.entity.Additional;
-import com.aerolinea.aerolinea.booking.entity.Tariff;
-import com.aerolinea.aerolinea.booking.service.TariffService;
+import com.aerolinea.aerolinea.booking.tariff.entity.Additional;
+import com.aerolinea.aerolinea.booking.tariff.entity.Tariff;
+import com.aerolinea.aerolinea.booking.tariff.service.TariffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
