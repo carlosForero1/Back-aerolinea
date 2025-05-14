@@ -1,12 +1,11 @@
-package com.aerolinea.aerolinea.booking.service;
+package com.aerolinea.aerolinea.booking.flight.service;
 
 
-import com.aerolinea.aerolinea.booking.entity.Flight;
-import com.aerolinea.aerolinea.booking.repository.FlightRepository;
+import com.aerolinea.aerolinea.booking.flight.entity.Flight;
+import com.aerolinea.aerolinea.booking.flight.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.aerolinea.aerolinea.booking.entity;
+package com.aerolinea.aerolinea.booking.city.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

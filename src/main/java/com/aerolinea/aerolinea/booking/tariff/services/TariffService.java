@@ -1,10 +1,10 @@
-package com.aerolinea.aerolinea.booking.service;
+package com.aerolinea.aerolinea.booking.tariff.services;
 
-import com.aerolinea.aerolinea.booking.entity.Flight;
-import com.aerolinea.aerolinea.booking.repository.FlightRepository;
-import com.aerolinea.aerolinea.booking.entity.Additional;
-import com.aerolinea.aerolinea.booking.entity.Tariff;
-import com.aerolinea.aerolinea.booking.repository.TariffRepository;
+import com.aerolinea.aerolinea.booking.flight.entity.Flight;
+import com.aerolinea.aerolinea.booking.flight.repository.FlightRepository;
+import com.aerolinea.aerolinea.booking.tariff.entity.Additional;
+import com.aerolinea.aerolinea.booking.tariff.entity.Tariff;
+import com.aerolinea.aerolinea.booking.tariff.repository.TariffRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

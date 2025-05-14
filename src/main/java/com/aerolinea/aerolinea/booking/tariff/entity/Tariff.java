@@ -1,5 +1,7 @@
-package com.aerolinea.aerolinea.booking.entity;
+package com.aerolinea.aerolinea.booking.tariff.entity;
 
+import com.aerolinea.aerolinea.booking.flight.entity.Flight;
+import com.aerolinea.aerolinea.booking.tariff.entity.Additional;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -22,6 +24,15 @@ public class Tariff {
     @ManyToOne
     @JoinColumn(name = "flight_id", nullable = false)
     private Flight flight;
+
+    @ManyToMany
+    @JoinTable(
+            name = "tariff_included_services",
+            joinColumns = @JoinColumn(name = "tariff_id"),
+            inverseJoinColumns = @JoinColumn(name = "additional_id")
+    )
+    private List<Additional> includedServices;
+
 
     @ManyToMany
     @JoinTable(
@@ -77,6 +88,14 @@ public class Tariff {
 
     public void setAdditionals(List<Additional> additionals) {
         Additionals = additionals;
+    }
+
+    public List<Additional> getIncludedServices() {
+        return includedServices;
+    }
+
+    public void setIncludedServices(List<Additional> includedServices) {
+        this.includedServices = includedServices;
     }
 
     @Override

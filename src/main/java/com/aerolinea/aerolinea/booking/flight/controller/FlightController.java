@@ -1,13 +1,14 @@
-package com.aerolinea.aerolinea.booking.Controller;
+package com.aerolinea.aerolinea.booking.flight.controller;
 
-import com.aerolinea.aerolinea.booking.entity.Flight;
-import com.aerolinea.aerolinea.booking.service.FlightService;
+import com.aerolinea.aerolinea.booking.flight.entity.Flight;
+import com.aerolinea.aerolinea.booking.flight.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -17,7 +18,7 @@ public class FlightController {
     private FlightService flightService;
 
     @GetMapping("/api")
-    public List<Flight> getAllFlight(  ) {
+    public List<Flight> getAllFlight() {
         List<Flight> result = flightService.allFlights();
         return result;
     }
@@ -43,6 +44,11 @@ public class FlightController {
         }
 
         return result;
+    }
+
+    @GetMapping("/api/flightsFyId/{id}")
+    public Optional<Flight> getFlightsWithCapacityStatus(@PathVariable Long id) {
+        return flightService.findById(id);
     }
 
 }

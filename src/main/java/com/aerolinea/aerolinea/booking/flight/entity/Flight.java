@@ -1,5 +1,6 @@
-package com.aerolinea.aerolinea.booking.entity;
+package com.aerolinea.aerolinea.booking.flight.entity;
 
+import com.aerolinea.aerolinea.booking.city.entity.City;
 import jakarta.persistence.*;
 
 @Entity
