@@ -4,11 +4,13 @@ import com.aerolinea.aerolinea.booking.pay.service.PayPalService;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Map;
 
 @RestController
@@ -46,21 +48,25 @@ public class PayPalController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
-
     @GetMapping("/success")
-    public String success(
-            @RequestParam("paymentId") String paymentId,
-            @RequestParam("PayerID") String payerId) {
-        try {
-            Payment payment = service.executePayment(paymentId, payerId);
-            if (payment.getState().equals("approved")) {
-                return "Pago aprobado";
-            }
-        } catch (PayPalRESTException e) {
-            e.printStackTrace();
-        }
-        return "Error en el pago";
+    public ResponseEntity<Map<String, Object>> simulateSuccess() {
+        Map<String, Object> response = Map.of(
+                "status", "success",
+                "message", "El pago fue simulado exitosamente.",
+                "redirectUrl", "http://localhost:3000/payment-success"
+        );
+        return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/failure")
+    public ResponseEntity<Map<String, Object>> simulateFailure() {
+        Map<String, Object> response = Map.of(
+                "status", "failure",
+                "message", "El pago fue rechazado debido a saldo insuficiente.",
+                "reason", "saldo-insuficiente",
+                "redirectUrl", "http://localhost:3000/payment-error?reason=saldo-insuficiente"
+        );
+        return ResponseEntity.status(HttpStatus.PAYMENT_REQUIRED).body(response);
+    }
 
 }
