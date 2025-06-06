@@ -52,19 +52,30 @@ public class PayPalController {
     public ResponseEntity<Map<String, Object>> simulateSuccess() {
         Map<String, Object> response = Map.of(
                 "status", "success",
-                "message", "El pago fue simulado exitosamente.",
+                "message", "El pago fue  exitosamente.",
                 "redirectUrl", "http://localhost:3000/payment-success"
         );
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/failure")
-    public ResponseEntity<Map<String, Object>> simulateFailure() {
+    public ResponseEntity<Map<String, Object>> failure() {
         Map<String, Object> response = Map.of(
                 "status", "failure",
                 "message", "El pago fue rechazado debido a saldo insuficiente.",
                 "reason", "saldo-insuficiente",
                 "redirectUrl", "http://localhost:3000/payment-error?reason=saldo-insuficiente"
+        );
+        return ResponseEntity.status(HttpStatus.PAYMENT_REQUIRED).body(response);
+    }
+
+    @GetMapping("/failure/technical")
+    public ResponseEntity<Map<String, Object>> technical() {
+        Map<String, Object> response = Map.of(
+                "status", "failure",
+                "message", "El pago fue rechazado debido a errores tecnicos comuniquese con su administrador.",
+                "reason", "saldo-insuficiente",
+                "redirectUrl", "http://localhost:3000/payment-error?reason=error=tecnico"
         );
         return ResponseEntity.status(HttpStatus.PAYMENT_REQUIRED).body(response);
     }
